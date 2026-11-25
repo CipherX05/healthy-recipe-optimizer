@@ -1,0 +1,1596 @@
+{
+  "recorded": true,
+  "training": {
+    "training_completed": true,
+    "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "completed_at_utc": "2026-11-24T16:08:40.685079+00:00",
+    "training_code_sha256": "00de36a93dbbb00e40d347e24b98006d786aaa26b2e141a4fab842fbd0b2a560",
+    "adapter_weights_sha256": "7c22015549f6bd67bbf1ae4e7f220e057ea1f06c40e3523ccb3b43df04ae157e",
+    "seed": 42,
+    "epochs": 3,
+    "optimizer_steps": 84,
+    "learning_rate": 0.0002,
+    "lora_rank": 8,
+    "lora_alpha": 16,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "trainable_parameters": 540672,
+    "total_parameters": 494573440,
+    "adapter_weight_l2_change": 1.1682558585927711,
+    "snapshot_sha256": "e8e56dddb5b0d6ac37b66b16f4f440999c1713ca913235ed58fa67a948d8510e",
+    "data_file_sha256": {
+      "train": "ed886c22a2d3383d60c4a43fc16e7aa0c052172469eb83569e725558a2596d76",
+      "validation": "91b109b11ef878c40ccf63597f1df759a936d20e2289a706a075b6d8c3cfa59b",
+      "test": "0134ef89cab78f2056ba113cfd76a924204f96a5b7d7b9a60e66a5d80eea8246"
+    },
+    "split_counts": {
+      "train": {
+        "records": 224,
+        "queries": 28,
+        "families": [
+          "butter-chicken",
+          "caesar",
+          "mapo-tofu"
+        ]
+      },
+      "validation": {
+        "records": 24,
+        "queries": 8,
+        "families": [
+          "stroganoff"
+        ]
+      },
+      "test": {
+        "records": 24,
+        "queries": 8,
+        "families": [
+          "carbonara"
+        ]
+      }
+    },
+    "label_sources": [
+      "fixed_rule_teacher_v2"
+    ],
+    "label_review_status": [
+      "unreviewed"
+    ],
+    "initial_validation_completion_loss": 0.5599505461570693,
+    "best_validation_completion_loss": 0.12620332609574364,
+    "training_seconds": 280.6966369152069,
+    "device": "Tesla T4",
+    "versions": {
+      "torch": "2.14.1+cu130",
+      "transformers": "4.57.3",
+      "peft": "0.18.0",
+      "accelerate": "1.12.0"
+    },
+    "interpretation": "Weakly supervised rule imitation. No independent flavor or suitability accuracy claimed."
+  },
+  "test_metrics": {
+    "base": {
+      "records": 24,
+      "independent_queries": 8,
+      "recipe_families": [
+        "carbonara"
+      ],
+      "json_valid_rate": 1.0,
+      "candidate_valid_rate": 1.0,
+      "eligible_rate": 0.875,
+      "rule_agreement": 0.8333333333333334,
+      "interpretation": "Agreement with unreviewed rules, not independently validated suitability."
+    },
+    "lora": {
+      "records": 24,
+      "independent_queries": 8,
+      "recipe_families": [
+        "carbonara"
+      ],
+      "json_valid_rate": 1.0,
+      "candidate_valid_rate": 1.0,
+      "eligible_rate": 1.0,
+      "rule_agreement": 0.7916666666666666,
+      "interpretation": "Agreement with unreviewed rules, not independently validated suitability."
+    }
+  },
+  "cases": {
+    "butter-chicken/butter/satFat": {
+      "split": "train",
+      "rule_baseline": "avocadoPuree",
+      "modes": {
+        "base": {
+          "query_id": "butter-chicken/butter/satFat",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\": \"avocadoPuree\"}",
+          "latency_seconds": 0.580175813999972,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "avocadoPuree",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "butter-chicken/butter/satFat",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\":\"avocadoPuree\"}",
+          "latency_seconds": 0.510499086999971,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "avocadoPuree",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": false
+        }
+      }
+    },
+    "butter-chicken/butter/calories": {
+      "split": "train",
+      "rule_baseline": "avocadoPuree",
+      "modes": {
+        "base": {
+          "query_id": "butter-chicken/butter/calories",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\": \"coconutOil\"}",
+          "latency_seconds": 0.44763016299998526,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "coconutOil",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "butter-chicken/butter/calories",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\":\"avocadoPuree\"}",
+          "latency_seconds": 0.519228799000075,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "avocadoPuree",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": false
+        }
+      }
+    },
+    "butter-chicken/butter/protein": {
+      "split": "train",
+      "rule_baseline": "avocadoPuree",
+      "modes": {
+        "base": {
+          "query_id": "butter-chicken/butter/protein",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\": \"coconutOil\"}",
+          "latency_seconds": 0.43920121200005724,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "coconutOil",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "butter-chicken/butter/protein",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\":\"avocadoPuree\"}",
+          "latency_seconds": 0.5517302169999994,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "avocadoPuree",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": false
+        }
+      }
+    },
+    "butter-chicken/butter/fiber": {
+      "split": "train",
+      "rule_baseline": "avocadoPuree",
+      "modes": {
+        "base": {
+          "query_id": "butter-chicken/butter/fiber",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\": \"coconutOil\"}",
+          "latency_seconds": 0.41099190700003874,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "coconutOil",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "butter-chicken/butter/fiber",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\":\"avocadoPuree\"}",
+          "latency_seconds": 0.4966673860000128,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "avocadoPuree",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": false
+        }
+      }
+    },
+    "butter-chicken/cream/satFat": {
+      "split": "train",
+      "rule_baseline": "cashewCream",
+      "modes": {
+        "base": {
+          "query_id": "butter-chicken/cream/satFat",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "cashewCream",
+          "raw_output": "{\"candidate_id\": \"cashewCream\"}",
+          "latency_seconds": 0.43550479299995004,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "butter-chicken/cream/satFat",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "cashewCream",
+          "raw_output": "{\"candidate_id\":\"cashewCream\"}",
+          "latency_seconds": 0.4965790129999732,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        }
+      }
+    },
+    "butter-chicken/cream/calories": {
+      "split": "train",
+      "rule_baseline": "cashewCream",
+      "modes": {
+        "base": {
+          "query_id": "butter-chicken/cream/calories",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "cashewCream",
+          "raw_output": "{\"candidate_id\": \"cashewCream\"}",
+          "latency_seconds": 0.4289974959999654,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "butter-chicken/cream/calories",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "cashewCream",
+          "raw_output": "{\"candidate_id\":\"cashewCream\"}",
+          "latency_seconds": 0.4955038949999562,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        }
+      }
+    },
+    "butter-chicken/cream/protein": {
+      "split": "train",
+      "rule_baseline": "cashewCream",
+      "modes": {
+        "base": {
+          "query_id": "butter-chicken/cream/protein",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "cashewCream",
+          "raw_output": "{\"candidate_id\": \"cashewCream\"}",
+          "latency_seconds": 0.43678918099999464,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "butter-chicken/cream/protein",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "cashewCream",
+          "raw_output": "{\"candidate_id\":\"cashewCream\"}",
+          "latency_seconds": 0.4997330940000211,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        }
+      }
+    },
+    "butter-chicken/cream/fiber": {
+      "split": "train",
+      "rule_baseline": "cashewCream",
+      "modes": {
+        "base": {
+          "query_id": "butter-chicken/cream/fiber",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "cashewCream",
+          "raw_output": "{\"candidate_id\": \"cashewCream\"}",
+          "latency_seconds": 0.43608702799997445,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "butter-chicken/cream/fiber",
+          "recipe_family": "butter-chicken",
+          "variant": 0,
+          "target": "cashewCream",
+          "raw_output": "{\"candidate_id\":\"cashewCream\"}",
+          "latency_seconds": 0.5314416470000651,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        }
+      }
+    },
+    "carbonara/pancetta/satFat": {
+      "split": "test",
+      "rule_baseline": "turkeyBacon",
+      "modes": {
+        "base": {
+          "query_id": "carbonara/pancetta/satFat",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "turkeyBacon",
+          "raw_output": "{\"candidate_id\": \"turkeyBacon\"}",
+          "latency_seconds": 0.4212284479999653,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "turkeyBacon",
+          "recommendation_id": "turkeyBacon",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "carbonara/pancetta/satFat",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "turkeyBacon",
+          "raw_output": "{\"candidate_id\":\"shiitake\"}",
+          "latency_seconds": 0.4278256809999448,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "shiitake",
+          "recommendation_id": "shiitake",
+          "used_fallback": false
+        }
+      }
+    },
+    "carbonara/pancetta/calories": {
+      "split": "test",
+      "rule_baseline": "turkeyBacon",
+      "modes": {
+        "base": {
+          "query_id": "carbonara/pancetta/calories",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "turkeyBacon",
+          "raw_output": "{\"candidate_id\": \"turkeyBacon\"}",
+          "latency_seconds": 0.44312095099996895,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "turkeyBacon",
+          "recommendation_id": "turkeyBacon",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "carbonara/pancetta/calories",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "turkeyBacon",
+          "raw_output": "{\"candidate_id\":\"shiitake\"}",
+          "latency_seconds": 0.42874842900005206,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "shiitake",
+          "recommendation_id": "shiitake",
+          "used_fallback": false
+        }
+      }
+    },
+    "carbonara/pancetta/protein": {
+      "split": "test",
+      "rule_baseline": null,
+      "modes": {
+        "base": {
+          "query_id": "carbonara/pancetta/protein",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": null,
+          "raw_output": "{\"candidate_id\": \"turkeyBacon\"}",
+          "latency_seconds": 0.43894755999997415,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "turkeyBacon",
+          "recommendation_id": null,
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "carbonara/pancetta/protein",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": null,
+          "raw_output": "{\"candidate_id\":null}",
+          "latency_seconds": 0.3390746529998978,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": null,
+          "recommendation_id": null,
+          "used_fallback": false
+        }
+      }
+    },
+    "carbonara/pancetta/fiber": {
+      "split": "test",
+      "rule_baseline": "shiitake",
+      "modes": {
+        "base": {
+          "query_id": "carbonara/pancetta/fiber",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "shiitake",
+          "raw_output": "{\"candidate_id\": \"shiitake\"}",
+          "latency_seconds": 0.5181451099999776,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "shiitake",
+          "recommendation_id": "shiitake",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "carbonara/pancetta/fiber",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "shiitake",
+          "raw_output": "{\"candidate_id\":\"shiitake\"}",
+          "latency_seconds": 0.5188519980000592,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "shiitake",
+          "recommendation_id": "shiitake",
+          "used_fallback": false
+        }
+      }
+    },
+    "carbonara/parmesan/satFat": {
+      "split": "test",
+      "rule_baseline": "nutritionalYeast",
+      "modes": {
+        "base": {
+          "query_id": "carbonara/parmesan/satFat",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\": \"nutritionalYeast\"}",
+          "latency_seconds": 0.495090657999981,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "carbonara/parmesan/satFat",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\":\"nutritionalYeast\"}",
+          "latency_seconds": 0.5810001750000993,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        }
+      }
+    },
+    "carbonara/parmesan/calories": {
+      "split": "test",
+      "rule_baseline": "nutritionalYeast",
+      "modes": {
+        "base": {
+          "query_id": "carbonara/parmesan/calories",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\": \"nutritionalYeast\"}",
+          "latency_seconds": 0.5445890830000053,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "carbonara/parmesan/calories",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\":\"nutritionalYeast\"}",
+          "latency_seconds": 0.45412539800008744,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        }
+      }
+    },
+    "carbonara/parmesan/protein": {
+      "split": "test",
+      "rule_baseline": "nutritionalYeast",
+      "modes": {
+        "base": {
+          "query_id": "carbonara/parmesan/protein",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\": \"nutritionalYeast\"}",
+          "latency_seconds": 0.4096060550000402,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "carbonara/parmesan/protein",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\":\"nutritionalYeast\"}",
+          "latency_seconds": 0.4587254690000009,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        }
+      }
+    },
+    "carbonara/parmesan/fiber": {
+      "split": "test",
+      "rule_baseline": "nutritionalYeast",
+      "modes": {
+        "base": {
+          "query_id": "carbonara/parmesan/fiber",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\": \"nutritionalYeast\"}",
+          "latency_seconds": 0.40916163200006395,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "carbonara/parmesan/fiber",
+          "recipe_family": "carbonara",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\":\"nutritionalYeast\"}",
+          "latency_seconds": 0.4654727099999718,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        }
+      }
+    },
+    "stroganoff/butter/satFat": {
+      "split": "validation",
+      "rule_baseline": "avocadoPuree",
+      "modes": {
+        "base": {
+          "query_id": "stroganoff/butter/satFat",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\": \"coconutOil\"}",
+          "latency_seconds": 0.4375404930000286,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "coconutOil",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "stroganoff/butter/satFat",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\":\"avocadoPuree\"}",
+          "latency_seconds": 0.5316862150000361,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "avocadoPuree",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": false
+        }
+      }
+    },
+    "stroganoff/butter/calories": {
+      "split": "validation",
+      "rule_baseline": "avocadoPuree",
+      "modes": {
+        "base": {
+          "query_id": "stroganoff/butter/calories",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\": \"coconutOil\"}",
+          "latency_seconds": 0.44496420099994793,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "coconutOil",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "stroganoff/butter/calories",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\":\"avocadoPuree\"}",
+          "latency_seconds": 0.5329881289999321,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "avocadoPuree",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": false
+        }
+      }
+    },
+    "stroganoff/butter/protein": {
+      "split": "validation",
+      "rule_baseline": "avocadoPuree",
+      "modes": {
+        "base": {
+          "query_id": "stroganoff/butter/protein",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\": \"coconutOil\"}",
+          "latency_seconds": 0.442903638999951,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "coconutOil",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "stroganoff/butter/protein",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\":\"avocadoPuree\"}",
+          "latency_seconds": 0.5206549040000255,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "avocadoPuree",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": false
+        }
+      }
+    },
+    "stroganoff/butter/fiber": {
+      "split": "validation",
+      "rule_baseline": "avocadoPuree",
+      "modes": {
+        "base": {
+          "query_id": "stroganoff/butter/fiber",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\": \"coconutOil\"}",
+          "latency_seconds": 0.4449027240000305,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "coconutOil",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "stroganoff/butter/fiber",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "avocadoPuree",
+          "raw_output": "{\"candidate_id\":\"avocadoPuree\"}",
+          "latency_seconds": 0.5078294160000496,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "avocadoPuree",
+          "recommendation_id": "avocadoPuree",
+          "used_fallback": false
+        }
+      }
+    },
+    "stroganoff/sourCream/satFat": {
+      "split": "validation",
+      "rule_baseline": "greekYogurt",
+      "modes": {
+        "base": {
+          "query_id": "stroganoff/sourCream/satFat",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "greekYogurt",
+          "raw_output": "{\"candidate_id\": \"greekYogurt\"}",
+          "latency_seconds": 0.48313129500002105,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "greekYogurt",
+          "recommendation_id": "greekYogurt",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "stroganoff/sourCream/satFat",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "greekYogurt",
+          "raw_output": "{\"candidate_id\":\"cashewCream\"}",
+          "latency_seconds": 0.4483489159999863,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        }
+      }
+    },
+    "stroganoff/sourCream/calories": {
+      "split": "validation",
+      "rule_baseline": "greekYogurt",
+      "modes": {
+        "base": {
+          "query_id": "stroganoff/sourCream/calories",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "greekYogurt",
+          "raw_output": "{\"candidate_id\": \"greekYogurt\"}",
+          "latency_seconds": 0.4925429800000529,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "greekYogurt",
+          "recommendation_id": "greekYogurt",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "stroganoff/sourCream/calories",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "greekYogurt",
+          "raw_output": "{\"candidate_id\":\"cashewCream\"}",
+          "latency_seconds": 0.44348444299998846,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        }
+      }
+    },
+    "stroganoff/sourCream/protein": {
+      "split": "validation",
+      "rule_baseline": "greekYogurt",
+      "modes": {
+        "base": {
+          "query_id": "stroganoff/sourCream/protein",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "greekYogurt",
+          "raw_output": "{\"candidate_id\": \"greekYogurt\"}",
+          "latency_seconds": 0.4910800569999765,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "greekYogurt",
+          "recommendation_id": "greekYogurt",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "stroganoff/sourCream/protein",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "greekYogurt",
+          "raw_output": "{\"candidate_id\":\"cashewCream\"}",
+          "latency_seconds": 0.4530901209999456,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        }
+      }
+    },
+    "stroganoff/sourCream/fiber": {
+      "split": "validation",
+      "rule_baseline": "cashewCream",
+      "modes": {
+        "base": {
+          "query_id": "stroganoff/sourCream/fiber",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "cashewCream",
+          "raw_output": "{\"candidate_id\": \"cashewCream\"}",
+          "latency_seconds": 0.4306305820000489,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "stroganoff/sourCream/fiber",
+          "recipe_family": "stroganoff",
+          "variant": 0,
+          "target": "cashewCream",
+          "raw_output": "{\"candidate_id\":\"cashewCream\"}",
+          "latency_seconds": 0.4489046280000366,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "cashewCream",
+          "recommendation_id": "cashewCream",
+          "used_fallback": false
+        }
+      }
+    },
+    "mapo-tofu/groundPork/satFat": {
+      "split": "train",
+      "rule_baseline": "groundTurkey",
+      "modes": {
+        "base": {
+          "query_id": "mapo-tofu/groundPork/satFat",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": "groundTurkey",
+          "raw_output": "{\"candidate_id\": \"redLentils\"}",
+          "latency_seconds": 0.5642603769999823,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "redLentils",
+          "recommendation_id": "redLentils",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "mapo-tofu/groundPork/satFat",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": "groundTurkey",
+          "raw_output": "{\"candidate_id\":\"groundTurkey\"}",
+          "latency_seconds": 0.48803831199995784,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "groundTurkey",
+          "recommendation_id": "groundTurkey",
+          "used_fallback": false
+        }
+      }
+    },
+    "mapo-tofu/groundPork/calories": {
+      "split": "train",
+      "rule_baseline": "groundTurkey",
+      "modes": {
+        "base": {
+          "query_id": "mapo-tofu/groundPork/calories",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": "groundTurkey",
+          "raw_output": "{\"candidate_id\": \"redLentils\"}",
+          "latency_seconds": 0.5318134870000222,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "redLentils",
+          "recommendation_id": "redLentils",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "mapo-tofu/groundPork/calories",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": "groundTurkey",
+          "raw_output": "{\"candidate_id\":\"groundTurkey\"}",
+          "latency_seconds": 0.539846060000059,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "groundTurkey",
+          "recommendation_id": "groundTurkey",
+          "used_fallback": false
+        }
+      }
+    },
+    "mapo-tofu/groundPork/protein": {
+      "split": "train",
+      "rule_baseline": "groundTurkey",
+      "modes": {
+        "base": {
+          "query_id": "mapo-tofu/groundPork/protein",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": "groundTurkey",
+          "raw_output": "{\"candidate_id\": \"groundTurkey\"}",
+          "latency_seconds": 0.4639559569999392,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "groundTurkey",
+          "recommendation_id": "groundTurkey",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "mapo-tofu/groundPork/protein",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": "groundTurkey",
+          "raw_output": "{\"candidate_id\":\"groundTurkey\"}",
+          "latency_seconds": 0.49040319400000953,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "groundTurkey",
+          "recommendation_id": "groundTurkey",
+          "used_fallback": false
+        }
+      }
+    },
+    "mapo-tofu/groundPork/fiber": {
+      "split": "train",
+      "rule_baseline": "tempeh",
+      "modes": {
+        "base": {
+          "query_id": "mapo-tofu/groundPork/fiber",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": "tempeh",
+          "raw_output": "{\"candidate_id\": \"redLentils\"}",
+          "latency_seconds": 0.46755502300004537,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "redLentils",
+          "recommendation_id": "redLentils",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "mapo-tofu/groundPork/fiber",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": "tempeh",
+          "raw_output": "{\"candidate_id\":\"groundTurkey\"}",
+          "latency_seconds": 0.4243909439999243,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "groundTurkey",
+          "recommendation_id": "tempeh",
+          "used_fallback": true
+        }
+      }
+    },
+    "mapo-tofu/chiliOil/satFat": {
+      "split": "train",
+      "rule_baseline": "oliveOil",
+      "modes": {
+        "base": {
+          "query_id": "mapo-tofu/chiliOil/satFat",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": "oliveOil",
+          "raw_output": "{\"candidate_id\": \"oliveOil\"}",
+          "latency_seconds": 0.3692152249999481,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "oliveOil",
+          "recommendation_id": "oliveOil",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "mapo-tofu/chiliOil/satFat",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": "oliveOil",
+          "raw_output": "{\"candidate_id\":\"oliveOil\"}",
+          "latency_seconds": 0.42087301900005514,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "oliveOil",
+          "recommendation_id": "oliveOil",
+          "used_fallback": false
+        }
+      }
+    },
+    "mapo-tofu/chiliOil/calories": {
+      "split": "train",
+      "rule_baseline": null,
+      "modes": {
+        "base": {
+          "query_id": "mapo-tofu/chiliOil/calories",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": null,
+          "raw_output": "{\"candidate_id\": \"oliveOil\"}",
+          "latency_seconds": 0.3668570700000373,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "oliveOil",
+          "recommendation_id": null,
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "mapo-tofu/chiliOil/calories",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": null,
+          "raw_output": "{\"candidate_id\":null}",
+          "latency_seconds": 0.31838455800004795,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": null,
+          "recommendation_id": null,
+          "used_fallback": false
+        }
+      }
+    },
+    "mapo-tofu/chiliOil/protein": {
+      "split": "train",
+      "rule_baseline": null,
+      "modes": {
+        "base": {
+          "query_id": "mapo-tofu/chiliOil/protein",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": null,
+          "raw_output": "{\"candidate_id\": \"oliveOil\"}",
+          "latency_seconds": 0.38861775700002,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "oliveOil",
+          "recommendation_id": null,
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "mapo-tofu/chiliOil/protein",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": null,
+          "raw_output": "{\"candidate_id\":null}",
+          "latency_seconds": 0.3245959949999815,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": null,
+          "recommendation_id": null,
+          "used_fallback": false
+        }
+      }
+    },
+    "mapo-tofu/chiliOil/fiber": {
+      "split": "train",
+      "rule_baseline": null,
+      "modes": {
+        "base": {
+          "query_id": "mapo-tofu/chiliOil/fiber",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": null,
+          "raw_output": "{\"candidate_id\": \"oliveOil\"}",
+          "latency_seconds": 0.3705447769999637,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "oliveOil",
+          "recommendation_id": null,
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "mapo-tofu/chiliOil/fiber",
+          "recipe_family": "mapo-tofu",
+          "variant": 0,
+          "target": null,
+          "raw_output": "{\"candidate_id\":null}",
+          "latency_seconds": 0.3289860539999836,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": null,
+          "recommendation_id": null,
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/caesarDressing/satFat": {
+      "split": "train",
+      "rule_baseline": "yogurtCaesar",
+      "modes": {
+        "base": {
+          "query_id": "caesar/caesarDressing/satFat",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "yogurtCaesar",
+          "raw_output": "{\"candidate_id\": \"yogurtCaesar\"}",
+          "latency_seconds": 0.4536883509999825,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "yogurtCaesar",
+          "recommendation_id": "yogurtCaesar",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "caesar/caesarDressing/satFat",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "yogurtCaesar",
+          "raw_output": "{\"candidate_id\":\"yogurtCaesar\"}",
+          "latency_seconds": 0.5273331279998956,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "yogurtCaesar",
+          "recommendation_id": "yogurtCaesar",
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/caesarDressing/calories": {
+      "split": "train",
+      "rule_baseline": "yogurtCaesar",
+      "modes": {
+        "base": {
+          "query_id": "caesar/caesarDressing/calories",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "yogurtCaesar",
+          "raw_output": "{\"candidate_id\": \"yogurtCaesar\"}",
+          "latency_seconds": 0.45397066299995004,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "yogurtCaesar",
+          "recommendation_id": "yogurtCaesar",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "caesar/caesarDressing/calories",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "yogurtCaesar",
+          "raw_output": "{\"candidate_id\":\"yogurtCaesar\"}",
+          "latency_seconds": 0.5409462019999864,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "yogurtCaesar",
+          "recommendation_id": "yogurtCaesar",
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/caesarDressing/protein": {
+      "split": "train",
+      "rule_baseline": "yogurtCaesar",
+      "modes": {
+        "base": {
+          "query_id": "caesar/caesarDressing/protein",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "yogurtCaesar",
+          "raw_output": "{\"candidate_id\": \"yogurtCaesar\"}",
+          "latency_seconds": 0.468620130999966,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "yogurtCaesar",
+          "recommendation_id": "yogurtCaesar",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "caesar/caesarDressing/protein",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "yogurtCaesar",
+          "raw_output": "{\"candidate_id\":\"yogurtCaesar\"}",
+          "latency_seconds": 0.5187878189999537,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "yogurtCaesar",
+          "recommendation_id": "yogurtCaesar",
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/caesarDressing/fiber": {
+      "split": "train",
+      "rule_baseline": "tahiniLemon",
+      "modes": {
+        "base": {
+          "query_id": "caesar/caesarDressing/fiber",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "tahiniLemon",
+          "raw_output": "{\"candidate_id\": \"yogurtCaesar\"}",
+          "latency_seconds": 0.45775425199997244,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "yogurtCaesar",
+          "recommendation_id": "yogurtCaesar",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "caesar/caesarDressing/fiber",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "tahiniLemon",
+          "raw_output": "{\"candidate_id\":\"yogurtCaesar\"}",
+          "latency_seconds": 0.5188943959999506,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "yogurtCaesar",
+          "recommendation_id": "yogurtCaesar",
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/parmesan/satFat": {
+      "split": "train",
+      "rule_baseline": "nutritionalYeast",
+      "modes": {
+        "base": {
+          "query_id": "caesar/parmesan/satFat",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\": \"nutritionalYeast\"}",
+          "latency_seconds": 0.4056187219999856,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "caesar/parmesan/satFat",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\":\"nutritionalYeast\"}",
+          "latency_seconds": 0.4545297519999849,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/parmesan/calories": {
+      "split": "train",
+      "rule_baseline": "nutritionalYeast",
+      "modes": {
+        "base": {
+          "query_id": "caesar/parmesan/calories",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\": \"nutritionalYeast\"}",
+          "latency_seconds": 0.422562255999992,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "caesar/parmesan/calories",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\":\"nutritionalYeast\"}",
+          "latency_seconds": 0.4426798190000909,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/parmesan/protein": {
+      "split": "train",
+      "rule_baseline": "nutritionalYeast",
+      "modes": {
+        "base": {
+          "query_id": "caesar/parmesan/protein",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\": \"nutritionalYeast\"}",
+          "latency_seconds": 0.49706944999991265,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "caesar/parmesan/protein",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\":\"nutritionalYeast\"}",
+          "latency_seconds": 0.5642804909999768,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/parmesan/fiber": {
+      "split": "train",
+      "rule_baseline": "nutritionalYeast",
+      "modes": {
+        "base": {
+          "query_id": "caesar/parmesan/fiber",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\": \"nutritionalYeast\"}",
+          "latency_seconds": 0.5224890169999981,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "caesar/parmesan/fiber",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "nutritionalYeast",
+          "raw_output": "{\"candidate_id\":\"nutritionalYeast\"}",
+          "latency_seconds": 0.5443926409999449,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "nutritionalYeast",
+          "recommendation_id": "nutritionalYeast",
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/croutons/satFat": {
+      "split": "train",
+      "rule_baseline": "toastedChickpeas",
+      "modes": {
+        "base": {
+          "query_id": "caesar/croutons/satFat",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "toastedChickpeas",
+          "raw_output": "{\"candidate_id\": \"toastedChickpeas\"}",
+          "latency_seconds": 0.6363641070000767,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "toastedChickpeas",
+          "recommendation_id": "toastedChickpeas",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "caesar/croutons/satFat",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "toastedChickpeas",
+          "raw_output": "{\"candidate_id\":\"toastedChickpeas\"}",
+          "latency_seconds": 0.5734798510000019,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "toastedChickpeas",
+          "recommendation_id": "toastedChickpeas",
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/croutons/calories": {
+      "split": "train",
+      "rule_baseline": "toastedChickpeas",
+      "modes": {
+        "base": {
+          "query_id": "caesar/croutons/calories",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "toastedChickpeas",
+          "raw_output": "{\"candidate_id\": \"toastedChickpeas\"}",
+          "latency_seconds": 0.4737634169999865,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "toastedChickpeas",
+          "recommendation_id": "toastedChickpeas",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "caesar/croutons/calories",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "toastedChickpeas",
+          "raw_output": "{\"candidate_id\":\"toastedChickpeas\"}",
+          "latency_seconds": 0.5297421310000345,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "toastedChickpeas",
+          "recommendation_id": "toastedChickpeas",
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/croutons/protein": {
+      "split": "train",
+      "rule_baseline": null,
+      "modes": {
+        "base": {
+          "query_id": "caesar/croutons/protein",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": null,
+          "raw_output": "{\"candidate_id\": \"toastedChickpeas\"}",
+          "latency_seconds": 0.476287376000073,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": false,
+          "selected": "toastedChickpeas",
+          "recommendation_id": null,
+          "used_fallback": true
+        },
+        "lora": {
+          "query_id": "caesar/croutons/protein",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": null,
+          "raw_output": "{\"candidate_id\":null}",
+          "latency_seconds": 0.31799520100003065,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": null,
+          "recommendation_id": null,
+          "used_fallback": false
+        }
+      }
+    },
+    "caesar/croutons/fiber": {
+      "split": "train",
+      "rule_baseline": "toastedChickpeas",
+      "modes": {
+        "base": {
+          "query_id": "caesar/croutons/fiber",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "toastedChickpeas",
+          "raw_output": "{\"candidate_id\": \"toastedChickpeas\"}",
+          "latency_seconds": 0.4730342789999895,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "toastedChickpeas",
+          "recommendation_id": "toastedChickpeas",
+          "used_fallback": false
+        },
+        "lora": {
+          "query_id": "caesar/croutons/fiber",
+          "recipe_family": "caesar",
+          "variant": 0,
+          "target": "toastedChickpeas",
+          "raw_output": "{\"candidate_id\":\"toastedChickpeas\"}",
+          "latency_seconds": 0.5252286260000574,
+          "json_valid": true,
+          "candidate_valid": true,
+          "eligible": true,
+          "selected": "toastedChickpeas",
+          "recommendation_id": "toastedChickpeas",
+          "used_fallback": false
+        }
+      }
+    }
+  }
+}

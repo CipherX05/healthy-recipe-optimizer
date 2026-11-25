@@ -1,0 +1,26 @@
+{
+  "base": {
+    "records": 24,
+    "independent_queries": 8,
+    "recipe_families": [
+      "carbonara"
+    ],
+    "json_valid_rate": 1.0,
+    "candidate_valid_rate": 1.0,
+    "eligible_rate": 0.875,
+    "rule_agreement": 0.8333333333333334,
+    "interpretation": "Agreement with unreviewed rules, not independently validated suitability."
+  },
+  "lora": {
+    "records": 24,
+    "independent_queries": 8,
+    "recipe_families": [
+      "carbonara"
+    ],
+    "json_valid_rate": 1.0,
+    "candidate_valid_rate": 1.0,
+    "eligible_rate": 1.0,
+    "rule_agreement": 0.7916666666666666,
+    "interpretation": "Agreement with unreviewed rules, not independently validated suitability."
+  }
+}

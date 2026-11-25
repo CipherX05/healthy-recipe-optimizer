@@ -1,0 +1,6 @@
+transformers==4.57.3
+peft==0.18.0
+accelerate==1.12.0
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+# Use the CUDA-enabled PyTorch already supplied by Google Colab.

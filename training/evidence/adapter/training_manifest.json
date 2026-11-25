@@ -1,0 +1,69 @@
+{
+  "training_completed": true,
+  "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "completed_at_utc": "2026-11-24T16:08:40.685079+00:00",
+  "training_code_sha256": "00de36a93dbbb00e40d347e24b98006d786aaa26b2e141a4fab842fbd0b2a560",
+  "adapter_weights_sha256": "7c22015549f6bd67bbf1ae4e7f220e057ea1f06c40e3523ccb3b43df04ae157e",
+  "seed": 42,
+  "epochs": 3,
+  "optimizer_steps": 84,
+  "learning_rate": 0.0002,
+  "lora_rank": 8,
+  "lora_alpha": 16,
+  "target_modules": [
+    "q_proj",
+    "v_proj"
+  ],
+  "trainable_parameters": 540672,
+  "total_parameters": 494573440,
+  "adapter_weight_l2_change": 1.1682558585927711,
+  "snapshot_sha256": "e8e56dddb5b0d6ac37b66b16f4f440999c1713ca913235ed58fa67a948d8510e",
+  "data_file_sha256": {
+    "train": "ed886c22a2d3383d60c4a43fc16e7aa0c052172469eb83569e725558a2596d76",
+    "validation": "91b109b11ef878c40ccf63597f1df759a936d20e2289a706a075b6d8c3cfa59b",
+    "test": "0134ef89cab78f2056ba113cfd76a924204f96a5b7d7b9a60e66a5d80eea8246"
+  },
+  "split_counts": {
+    "train": {
+      "records": 224,
+      "queries": 28,
+      "families": [
+        "butter-chicken",
+        "caesar",
+        "mapo-tofu"
+      ]
+    },
+    "validation": {
+      "records": 24,
+      "queries": 8,
+      "families": [
+        "stroganoff"
+      ]
+    },
+    "test": {
+      "records": 24,
+      "queries": 8,
+      "families": [
+        "carbonara"
+      ]
+    }
+  },
+  "label_sources": [
+    "fixed_rule_teacher_v2"
+  ],
+  "label_review_status": [
+    "unreviewed"
+  ],
+  "initial_validation_completion_loss": 0.5599505461570693,
+  "best_validation_completion_loss": 0.12620332609574364,
+  "training_seconds": 280.6966369152069,
+  "device": "Tesla T4",
+  "versions": {
+    "torch": "2.14.1+cu130",
+    "transformers": "4.57.3",
+    "peft": "0.18.0",
+    "accelerate": "1.12.0"
+  },
+  "interpretation": "Weakly supervised rule imitation. No independent flavor or suitability accuracy claimed."
+}

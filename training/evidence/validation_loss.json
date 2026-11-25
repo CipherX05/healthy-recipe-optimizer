@@ -1,0 +1,18 @@
+[
+  {
+    "epoch": 0,
+    "completion_loss": 0.5599505461570693
+  },
+  {
+    "epoch": 1,
+    "completion_loss": 0.12620332609574364
+  },
+  {
+    "epoch": 2,
+    "completion_loss": 0.19420423865960948
+  },
+  {
+    "epoch": 3,
+    "completion_loss": 0.2116525808211541
+  }
+]

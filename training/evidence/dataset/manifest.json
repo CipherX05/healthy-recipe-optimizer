@@ -1,0 +1,34 @@
+{
+  "snapshot_sha256": "e8e56dddb5b0d6ac37b66b16f4f440999c1713ca913235ed58fa67a948d8510e",
+  "label_source": "fixed_rule_teacher_v2",
+  "review_status": "unreviewed",
+  "excluded_ingredients": [
+    "pecorino"
+  ],
+  "warning": "Rule agreement measures imitation, not taste quality or clinical benefit.",
+  "splits": {
+    "train": {
+      "records": 224,
+      "independent_queries": 28,
+      "recipe_families": [
+        "butter-chicken",
+        "caesar",
+        "mapo-tofu"
+      ]
+    },
+    "validation": {
+      "records": 24,
+      "independent_queries": 8,
+      "recipe_families": [
+        "stroganoff"
+      ]
+    },
+    "test": {
+      "records": 24,
+      "independent_queries": 8,
+      "recipe_families": [
+        "carbonara"
+      ]
+    }
+  }
+}

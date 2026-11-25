@@ -1,0 +1,11 @@
+* text=auto eol=lf
+*.pdf binary
+*.pptx binary
+*.png binary
+*.safetensors binary
+
+# Retain the archived bytes used in the training manifest's SHA-256 checks.
+training/evidence/** -text
+training/ml/train_lora.py -text
+training/ml/food_snapshot.json -text
+training/evidence/training_loss.csv whitespace=cr-at-eol
