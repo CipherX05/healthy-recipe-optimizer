@@ -172,7 +172,7 @@ export default function Hero() {
         <div className="mt-14 flex flex-wrap gap-x-10 gap-y-4 font-mono2 text-[11px] uppercase tracking-[0.15em] text-[#a39b8b] pointer-events-auto">
           <span>Health <span className="text-[#575349]">+</span> Flavor <span className="text-[#575349]">+</span> Cuisine</span>
           <span>4 deliverables</span>
-          <span>5 demo recipes</span>
+          <span>Database + offline demo</span>
         </div>
       </div>
 
@@ -181,7 +181,7 @@ export default function Hero() {
         <div className="marquee-track flex whitespace-nowrap font-mono2 text-[11px] uppercase tracking-[0.2em] text-[#a39b8b]">
           {[0, 1].map((k) => (
             <span key={k} className="flex shrink-0">
-              {['cosine similarity · flavor vectors', 'weighted candidate ranking', 'goal-driven optimization', 'before and after evaluation', 'nutrition per 100 g', 'cuisine affinity'].map((t) => (
+              {['Jaccard similarity · flavor molecules', 'weighted candidate ranking', 'goal-driven optimization', 'before and after evaluation', 'nutrition per 100 g', 'cuisine affinity'].map((t) => (
                 <span key={t + k} className="mx-6">{t} <span className="text-[#f26522] ml-6">+</span></span>
               ))}
             </span>

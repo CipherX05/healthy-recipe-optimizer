@@ -2,7 +2,16 @@
 
 **Group 34 · Computational Gastronomy mini-project**
 
-This prototype recommends ingredient swaps for lower calories, lower saturated fat, higher protein, or higher fiber. It considers estimated nutrition alongside flavor and cuisine compatibility. The demo uses five built-in recipes, 44 ingredients, and preset candidates.
+This prototype recommends ingredient swaps for lower calories, lower saturated fat, higher protein, or higher fiber. It considers estimated nutrition alongside flavor and cuisine compatibility. The demo has two modes:
+
+| Mode | Data | Needs |
+| --- | --- | --- |
+| **Recipe database** (default when the server runs) | Imported RecipeDB recipes, USDA nutrition and FlavorDB2 molecules in SQLite; candidates and scores are computed per recipe | The Python server in [backend/](backend/README.md) and a one-time data build |
+| **Built-in examples (offline)** (fallback) | The original five recipes, 44 ingredients and preset candidates, with illustrative values | Only the web app |
+
+For the database mode, follow the [backend guide](backend/README.md) (setup, data sources, licences, commands, scoring and limitations). The [upgrade record](docs/UPGRADE_WALKTHROUGH.md) lists the changes and walks through one recipe. Source data is not included in this repository; the build downloads it.
+
+**The sections below, including the report and slides, describe the original submission and its built-in examples.** The report and slides have not been updated for database mode.
 
 ## Deliverables and evidence
 
@@ -11,11 +20,11 @@ This prototype recommends ingredient swaps for lower calories, lower saturated f
 | **D1 · Rank substitutes** | `rankCandidates` in [food.ts](src/data/food.ts) ranks preset candidates by flavor, nutrition, cuisine, and ingredient role. | The D1 panel shows factor scores and the recommendation. For Butter Chicken cream, cashew cream ranks first with an overall score of 0.90. |
 | **D2 · Modify the recipe** | `optimizeRecipe` uses the highest-ranked eligible swap for each ingredient in scope and keeps the original gram quantities. | The cream-only demo replaces 120 g of heavy cream with 120 g of cashew cream. Whole-recipe mode also replaces butter with avocado purée. |
 | **D3 · Evaluate the change** | `recipeNutrition` sums nutrient values by weight. `recipeSimilarity` computes flavor and cuisine proxy scores. The UI compares values per serving. | The cream-only example reduces estimated saturated fat from 15.9 g to 9.8 g per serving, a 38.2% reduction. See report page 2 and presentation slide 4. |
-| **D4 · Deliver an interactive app** | [Optimizer.tsx](src/sections/Optimizer.tsx) connects the recipe, ingredient, goal, and scope controls to D1–D3. [LoraPanel.tsx](src/components/LoraPanel.tsx) replays the saved model comparison. | The production build was tested offline at desktop, tablet, and mobile widths. The [demo capture](presentation/cream-only-demo.png) and presentation slide 5 show the workflow. |
+| **D4 · Deliver an interactive app** | [BuiltInDemo.tsx](src/components/optimizer/BuiltInDemo.tsx) connects the recipe, ingredient, goal, and scope controls to D1–D3. [LoraPanel.tsx](src/components/LoraPanel.tsx) replays the saved model comparison. | The production build was tested offline at desktop, tablet, and mobile widths. The [demo capture](presentation/cream-only-demo.png) and presentation slide 5 show the workflow. |
 
 ## Tech stack and local run
 
-The app uses React 19, TypeScript, Vite 7, Tailwind CSS 3, and bundled JSON and TypeScript data. The optimizer runs in the browser. The LoRA pilot uses Python, PyTorch, Hugging Face Transformers, PEFT, and Accelerate. The notebook includes an optional FastAPI inference script, separate from the browser demo.
+The app uses React 19, TypeScript, Vite 7, Tailwind CSS 3, and bundled JSON and TypeScript data. The built-in optimizer runs in the browser; database mode uses Python, FastAPI, SQLite, pandas and NetworkX. The LoRA pilot uses Python, PyTorch, Hugging Face Transformers, PEFT, and Accelerate. The notebook includes an optional FastAPI inference script, separate from the browser demo.
 
 Use Node.js **20.19+ on the 20.x line** or **22.12+**. The clean submission build used Node.js 24.22.3.
 
@@ -25,9 +34,9 @@ npm run build
 npm run preview
 ```
 
-Open [the local demo](http://localhost:4173/#demo) while the preview server runs. The default state is **Butter Chicken → Heavy cream → Reduce saturated fat → Selected ingredient only**. Click **Optimize** to jump to the D1–D3 results. The built app and recorded comparison work offline. Google Fonts fall back to installed fonts if the network is unavailable.
+Open [the local demo](http://localhost:4173/#demo) while the preview server runs. Without the Python server, the built-in examples open automatically (otherwise choose **Built-in examples**). Their default state is **Butter Chicken → Heavy cream → Reduce saturated fat → Selected ingredient only**. Click **Optimize** to jump to the D1–D3 results. The built app and recorded comparison work offline. Google Fonts fall back to installed fonts if the network is unavailable.
 
-## Data and scoring
+## Built-in example data and scoring
 
 The bundled nutrition values are illustrative per-100 g figures. The six flavor features, cuisine affinities, and category scores are manually assigned. The app uses curated replacement lists and keeps ingredient weights fixed. The score is `0.35 × flavor + 0.30 × nutrition + 0.25 × cuisine + 0.10 × role`.
 
@@ -59,6 +68,8 @@ Eligibility improved while exact rule agreement fell. These measurements show co
 - The [adapter and tokenizer](training/evidence/adapter) come from the training export. The package excludes downloaded base-model weights.
 
 ## Submission verification
+
+These are the checks on the original submission. Checks on the upgrade are in the [upgrade record](docs/UPGRADE_WALKTHROUGH.md#6-how-it-was-checked).
 
 | Check | Outcome |
 | --- | --- |

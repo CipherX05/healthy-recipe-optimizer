@@ -26,6 +26,7 @@ dist-ssr
 # Local credentials and generated training files
 .env
 .env.*
+!.env.example
 *.pem
 *.key
 __pycache__/
@@ -34,3 +35,7 @@ __pycache__/
 .ipynb_checkpoints/
 training/ml/data/
 training/ml/output/
+
+# Downloaded source data and the generated SQLite database (see backend/README.md).
+# Leading slash matters: src/data/ is application code and must stay tracked.
+/data/

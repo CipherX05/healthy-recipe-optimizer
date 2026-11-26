@@ -4,27 +4,27 @@ import { WEIGHTS } from '@/data/food';
 const CARDS = [
   {
     tag: 'Similarity',
-    title: 'Cosine similarity',
-    formula: 'cos(A, B) = A·B / (‖A‖‖B‖)',
-    body: 'Cosine similarity compares six manually assigned flavor features: creamy, rich, umami, sweet, tangy and earthy. Nutrition is scored separately.',
+    title: 'Jaccard similarity',
+    formula: 'J(A, B) = |A ∩ B| / |A ∪ B|',
+    body: 'A and B are the FlavorDB2 flavor-molecule sets of two ingredients. Sets with fewer than 10 molecules give no score. The offline demo instead compares six manually assigned flavor features.',
   },
   {
     tag: 'Ranking',
     title: 'Weighted candidate score',
-    formula: 'Score = w₁·Flavor + w₂·Nutrition + w₃·Cuisine + w₄·Category',
-    body: 'The weights are fixed. Changing the health goal changes the nutrition score for each candidate.',
+    formula: 'Score = w₁·Health + w₂·Flavor + w₃·Cuisine + w₄·Role',
+    body: 'Every score is between 0 and 1. You can change the weights in database mode; missing data earns no points. The offline demo keeps the default weights.',
   },
   {
     tag: 'Optimization',
     title: 'Goal-driven search',
     formula: 'min Calories · min SatFat · max Protein · max Fiber',
-    body: 'For each ingredient in scope, pick the highest-ranked candidate that improves the chosen nutrient by more than 2% at the same weight. Each swap is evaluated independently.',
+    body: 'For each ingredient in scope, recommend the highest-ranked role-compatible candidate that meaningfully improves the chosen nutrient and passes the saturated-fat, sodium and calorie guardrails. Each swap is evaluated independently.',
   },
   {
     tag: 'Evaluation',
     title: 'Before / after metrics',
     formula: 'Change (%) = (Modified − Original) / Original × 100',
-    body: 'A reduction helps calorie and saturated-fat goals. An increase helps protein and fiber goals. The demo also reports flavor and cuisine proxy scores.',
+    body: 'A reduction helps calorie and saturated-fat goals. An increase helps protein and fiber goals. Database mode also lists trade-offs and the ingredient lines it could not count.',
   },
 ];
 
@@ -63,13 +63,13 @@ export default function Method() {
 
         {/* weight bar */}
         <div className="reveal mt-10 border border-[#575349]/25 rounded-lg p-6" data-delay="120">
-          <p className="eyebrow mb-5">Scoring weights used in the demo</p>
+          <p className="eyebrow mb-5">Default scoring weights</p>
           <div className="flex h-12 rounded-md overflow-hidden font-mono2 text-[11px] uppercase tracking-[0.12em]">
             <div className="bg-[#575349] text-[#fdfdfd] flex items-center justify-center" style={{ width: `${WEIGHTS.flavor * 100}%` }}>
               Flavor {WEIGHTS.flavor}
             </div>
             <div className="bg-[#f26522] text-white flex items-center justify-center" style={{ width: `${WEIGHTS.nutrition * 100}%` }}>
-              Nutrition {WEIGHTS.nutrition}
+              Health {WEIGHTS.nutrition}
             </div>
             <div className="bg-[#7a8b5a] text-white flex items-center justify-center" style={{ width: `${WEIGHTS.cuisine * 100}%` }}>
               Cuisine {WEIGHTS.cuisine}

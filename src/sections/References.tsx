@@ -1,9 +1,11 @@
 import { useRevealRoot } from '@/hooks/useReveal';
 
 const DATA = [
-  { k: 'Recipe data', v: 'Five built-in recipes with ingredients, gram quantities, cuisine labels and preset substitutes.' },
-  { k: 'Nutrition data', v: 'Illustrative per-100 g values for calories, protein, fat, saturated fat, carbohydrates and fiber.' },
-  { k: 'Flavor data', v: 'Six manually assigned flavor scores per ingredient, inspired by the FlavorDB material from CGAS Lecture 4.' },
+  { k: 'RecipeDB', href: 'https://cosylab.iiitd.edu.in/recipedb/', v: 'Imported recipes: ingredient lines, quantities, servings, cuisine and cooking processes. CoSyLab, IIIT-Delhi. CC BY-NC-SA 3.0.' },
+  { k: 'USDA FoodData Central', href: 'https://fdc.nal.usda.gov/', v: 'SR Legacy (April 2018) nutrients per 100 g and household-measure weights. Public domain (CC0 1.0).' },
+  { k: 'FlavorDB2', href: 'https://cosylab.iiitd.edu.in/flavordb2/', v: 'Flavor molecules associated with ingredients. CoSyLab, IIIT-Delhi. CC BY-NC-SA 3.0.' },
+  { k: 'Indian Nutrient Databank (optional)', href: 'https://www.anuvaad.org.in/indian-nutrient-databank/', v: 'Used only for a few prepared Indian foods. The publisher states no licence.' },
+  { k: 'Curated by this project', href: null, v: 'Ingredient name matching and cooking roles. The offline examples use five recipes with illustrative nutrition values and hand-assigned flavor scores.' },
 ];
 
 const PAPERS = [
@@ -44,7 +46,15 @@ export default function References() {
                 <li key={d.k} className="reveal flex gap-5" data-delay={i * 70}>
                   <span className="font-mono2 text-[11px] text-[#f26522] pt-1 shrink-0 w-6">{String(i + 1).padStart(2, '0')}</span>
                   <div>
-                    <p className="font-display font-medium text-[#3e3a32]">{d.k}</p>
+                    <p className="font-display font-medium text-[#3e3a32]">
+                      {d.href ? (
+                        <a href={d.href} target="_blank" rel="noreferrer" className="underline decoration-[#f26522]/50 underline-offset-4 hover:text-[#f26522]">
+                          {d.k}
+                        </a>
+                      ) : (
+                        d.k
+                      )}
+                    </p>
                     <p className="font-body text-[#575349]/85 mt-1">{d.v}</p>
                   </div>
                 </li>

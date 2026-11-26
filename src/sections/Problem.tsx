@@ -43,7 +43,7 @@ export default function Problem() {
 
           <div className="md:col-span-5">
             <div className="reveal bg-[#efede9] rounded-lg p-6 md:p-8" data-delay="120">
-              <p className="eyebrow mb-5">Worked example</p>
+              <p className="eyebrow mb-5">Worked example · offline demo data</p>
               <dl className="font-mono2 text-[13px] space-y-2.5 text-[#575349]">
                 <div className="flex justify-between gap-4"><dt className="text-[#a39b8b]">Recipe</dt><dd>{exampleRecipe.name}</dd></div>
                 {swap && (

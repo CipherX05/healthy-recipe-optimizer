@@ -1,13 +1,13 @@
 import { useRevealRoot } from '@/hooks/useReveal';
 
 const STEPS = [
-  { n: '01', title: 'Select a recipe', body: 'Load the ingredients and quantities of a built-in recipe.' },
-  { n: '02', title: 'Enrich each ingredient', body: 'Look up nutrition per 100 g, six flavor features, category and cuisine affinity.' },
-  { n: '03', title: 'Look up candidates', body: 'Load the preset alternatives for the selected ingredient.' },
-  { n: '04', title: 'Rank the candidates', body: 'Score each on flavor, nutrition, cuisine and category — weighted into one number.' },
-  { n: '05', title: 'Choose an eligible substitute', body: 'Use the highest-ranked candidate that improves the target nutrient by more than 2% at the original weight.' },
-  { n: '06', title: 'Apply one or more swaps', body: 'Keep each original quantity. In whole-recipe mode, repeat independently for every replaceable ingredient.' },
-  { n: '07', title: 'Compare before / after', body: 'Quantify nutritional improvement, flavor similarity and cuisine consistency.' },
+  { n: '01', title: 'Select a recipe', body: 'Search recipes imported from RecipeDB and load their ingredient lines, quantities, cuisine and processes.' },
+  { n: '02', title: 'Match and enrich', body: 'Match each line to a reviewed ingredient, convert quantities to grams where there is evidence, and attach USDA nutrition and FlavorDB2 molecules.' },
+  { n: '03', title: 'Find candidates', body: 'Take every role-compatible ingredient from the substitution network.' },
+  { n: '04', title: 'Rank the candidates', body: 'Score each on health, flavor, cuisine and cooking role, weighted by your preferences.' },
+  { n: '05', title: 'Choose an eligible substitute', body: 'Recommend only candidates that meaningfully improve the target without sharply raising saturated fat, sodium or calories. You can choose another.' },
+  { n: '06', title: 'Apply one or more swaps', body: 'Assume the same weight unless you change the ratio. Whole-recipe mode treats each ingredient independently.' },
+  { n: '07', title: 'Compare before / after', body: 'Report nutrient changes, trade-offs, flavor similarity, cuisine compatibility and any missing data.' },
 ];
 
 export default function Pipeline() {

@@ -4,7 +4,7 @@ const DELIVERABLES = [
   {
     id: 'D1',
     title: 'Find suitable substitutes',
-    body: 'Rank built-in replacements for an ingredient by comparing flavor, nutrition, cuisine and category compatibility.',
+    body: 'Rank replacements for an ingredient by comparing health improvement, flavor, cuisine and cooking-role compatibility.',
   },
   {
     id: 'D2',
@@ -14,7 +14,7 @@ const DELIVERABLES = [
   {
     id: 'D3',
     title: 'Compare original and modified recipes',
-    body: 'Compare nutrient amounts per serving and report flavor similarity and cuisine consistency as proxy scores.',
+    body: 'Compare nutrient amounts per serving and report flavor similarity and cuisine compatibility as proxy scores.',
   },
   {
     id: 'D4',

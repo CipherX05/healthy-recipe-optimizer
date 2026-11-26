@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-10 pt-6 flex flex-col sm:flex-row justify-between gap-3 font-mono2 text-[10px] uppercase tracking-[0.16em] text-[#a39b8b]" style={{ borderTop: '1px solid rgba(239,237,233,0.15)' }}>
-          <span>Course project website · demo data is illustrative</span>
+          <span>Course project website · nutrition figures are estimates, not dietary advice</span>
           <a href="#top" className="hover:text-[#f26522] transition-colors min-h-[44px] inline-flex items-center">Back to top ↑</a>
         </div>
       </div>
